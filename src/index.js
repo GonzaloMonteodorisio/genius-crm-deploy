@@ -1,12 +1,21 @@
+
+
 const express = require('express')
+const cors = require('cors');
 const swaggerJsdoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const templateRoutes = require('./routes/templates')
 const landingRoutes = require('./routes/landings')
 const errorHandler = require('./middleware/errorHandler')
 
+
 const app = express()
+app.use(cors());
 app.use(express.json())
+
+
+
+
 
 const swaggerSpec = swaggerJsdoc({
   definition: {
