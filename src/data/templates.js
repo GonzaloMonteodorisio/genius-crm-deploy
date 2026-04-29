@@ -4,6 +4,8 @@ const promoEventHtml = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
+  
+  
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -134,6 +136,7 @@ const leadCaptureHtml = `<!DOCTYPE html>
       <p class="privacy">Al enviar aceptás nuestra <a href="{{privacyUrl}}">política de privacidad</a></p>
     </div>
   </div>
+ 
 </body>
 </html>`
 
