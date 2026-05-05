@@ -1,5 +1,6 @@
 const db = require('../data/db')
 const templateService = require('./templateService')
+const { normalizeStatus } = require('../constants/landingStatus')
 
 function getAllLandings() {
   return db.landings.map(landing => ({
@@ -26,7 +27,7 @@ function createLanding(data) {
     templateId: template.id,
     name: data.name,
     client: data.client,
-    status: 'draft',
+    status: 'borrador',
     fields: data.fields || {},
     createdAt: new Date().toISOString()
   }
@@ -73,4 +74,22 @@ function createLead(landingId, data) {
   return lead
 }
 
-module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, createLead }
+function updateLandingStatus(id, status) {
+  const landing = getLandingById(id)
+
+  const normalizedStatus = normalizeStatus(status)
+
+  if (!normalizedStatus) {
+    const err = new Error(`Invalid status: ${status}`)
+    err.statusCode = 400
+    throw err
+  }
+
+  landing.status = normalizedStatus
+
+  return landing
+}
+
+
+
+module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, createLead, updateLandingStatus }
