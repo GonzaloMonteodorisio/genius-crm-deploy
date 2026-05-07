@@ -1,5 +1,6 @@
 const db = require('../data/db')
 const templateService = require('./templateService')
+const { normalizeStatus } = require('../constants/landingStatus')
 
 function getAllLandings() {
   return db.landings.map(landing => ({
@@ -26,7 +27,7 @@ function createLanding(data) {
     templateId: template.id,
     name: data.name,
     client: data.client,
-    status: 'draft',
+    status: 'borrador',
     fields: data.fields || {},
     createdAt: new Date().toISOString()
   }
@@ -56,21 +57,91 @@ function getLeadsByLanding(landingId) {
   return db.leads.filter(l => l.landingId === Number(landingId))
 }
 
+const MAX_FIELD_LENGTH = 255;
+
+function validateLeadData(data) {
+  const name = data.name?.trim();
+  const email = data.email?.trim();
+  const phone = data.phone?.trim();
+
+  if (!name || !email) {
+    const err = new Error('Name and email are required');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  if (name.length > MAX_FIELD_LENGTH) {
+    const err = new Error('Name cannot exceed 255 characters');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  if (email.length > MAX_FIELD_LENGTH) {
+    const err = new Error('Email cannot exceed 255 characters');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  if (phone && phone.length > MAX_FIELD_LENGTH) {
+    const err = new Error('Phone cannot exceed 255 characters');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü0-9\s]+$/.test(name)) {
+    const err = new Error('Name cannot contain symbols');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  if (phone && !/^\d+$/.test(phone)) {
+    const err = new Error('Phone can only contain numbers');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  return {
+    name,
+    email,
+    phone: phone || null,
+  };
+}
+
 function createLead(landingId, data) {
-  getLandingById(landingId)
+  getLandingById(landingId);
+
+  const validatedLead = validateLeadData(data);
 
   const lead = {
     id: db.nextLeadId++,
     landingId: Number(landingId),
-    name: data.name,
-    email: data.email,
-    phone: data.phone || null,
+    name: validatedLead.name,
+    email: validatedLead.email,
+    phone: validatedLead.phone,
     message: data.message || null,
     createdAt: new Date().toISOString()
-  }
+  };
 
-  db.leads.push(lead)
-  return lead
+  db.leads.push(lead);
+  return lead;
 }
 
-module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, createLead }
+function updateLandingStatus(id, status) {
+  const landing = getLandingById(id)
+
+  const normalizedStatus = normalizeStatus(status)
+
+  if (!normalizedStatus) {
+    const err = new Error(`Invalid status: ${status}`)
+    err.statusCode = 400
+    throw err
+  }
+
+  landing.status = normalizedStatus
+
+  return landing
+}
+
+
+
+module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, createLead, updateLandingStatus }

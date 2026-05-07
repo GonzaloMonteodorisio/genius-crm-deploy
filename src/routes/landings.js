@@ -225,5 +225,52 @@ router.post('/:id/leads', (req, res, next) => {
     next(err)
   }
 })
+/**
+ * @swagger
+ * /api/landings/{id}/status:
+ *   patch:
+ *     summary: Update landing status
+ *     description: Change landing status (ACTIVA, BORRADOR, FINALIZADA)
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 example: ACTIVA
+ *     responses:
+ *       200:
+ *         description: Status updated successfully
+ *       400:
+ *         description: Invalid status
+ *       404:
+ *         description: Landing not found
+ */
+router.patch('/:id/status', (req, res) => {
+  try {
+    const updated = landingService.updateLandingStatus(
+      req.params.id,
+      req.body.status
+    )
+
+    res.json({
+      message: 'Status updated successfully',
+      data: updated
+    })
+  } catch (err) {
+    res.status(err.statusCode || 500).json({
+      message: err.message
+    })
+  }
+})
 
 module.exports = router
