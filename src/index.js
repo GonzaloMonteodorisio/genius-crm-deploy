@@ -117,7 +117,9 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Landing CRM running on port ${PORT}`);
-  console.log(`Swagger UI available at /api-docs`);
+  console.log(
+    `Swagger UI available at https://genius-crm-deploy.onrender.com/api-docs/`,
+  );
 });
 
 module.exports = app;
