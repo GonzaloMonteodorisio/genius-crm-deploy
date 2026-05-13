@@ -1,147 +1,197 @@
 const db = {
   nextLandingId: 5,
   nextLeadId: 4,
+  //landing existentes
   landings: [
-     {
+    {
       id: 1,
       templateId: 1,
-      name: 'Landing Dia de la Madre - SuenoSimple',
-      client: 'SuenoSimple',
-      status: 'active',
+      name: "Landing Dia de la Madre - SuenoSimple",
+      client: "SuenoSimple",
+      status: "active",
       fields: {
-        title: 'Dia de la Madre',
-        subtitle: 'Linea economica Pro',
-        ctaText: 'Comprar ahora',
-        ctaUrl: 'https://suenosimple.com/dia-de-la-madre',
-        eventDate: '2026-10-18',
-        heroImageUrl: 'https://via.placeholder.com/1200x400'
+        title: "Dia de la Madre",
+        subtitle: "Linea economica Pro",
+        ctaText: "Comprar ahora",
+        ctaUrl: "https://suenosimple.com/dia-de-la-madre",
+        eventDate: "2026-10-18",
+        heroImageUrl: "https://via.placeholder.com/1200x400",
       },
-      createdAt: '2026-04-29T19:00:00.000Z'
+      createdAt: "2026-04-29T19:00:00.000Z",
     },
     {
       id: 2,
       templateId: 3,
-      name: 'Landing Mundial 2026 - SuenoSimple',
-      client: 'SuenoSimple',
-      status: 'active',
+      name: "Landing Mundial 2026 - SuenoSimple",
+      client: "SuenoSimple",
+      status: "active",
       fields: {
-        title: 'Mundial 2026',
-        subtitle: 'Acceso a ofertas relampago',
-        ctaText: 'Quiero mi descuento mundial',
-        ctaUrl: 'https://suenosimple.com/mundial-2026',
-        eventDate: '2026-06-11',
-        heroImageUrl: 'https://via.placeholder.com/1200x400'
+        title: "Mundial 2026",
+        subtitle: "Acceso a ofertas relampago",
+        ctaText: "Quiero mi descuento mundial",
+        ctaUrl: "https://suenosimple.com/mundial-2026",
+        eventDate: "2026-06-11",
+        heroImageUrl: "https://via.placeholder.com/1200x400",
       },
-      createdAt: '2026-04-29T19:00:00.000Z'
+      createdAt: "2026-04-29T19:00:00.000Z",
     },
     {
       id: 3,
       templateId: 1,
-      name: 'Landing Dia del Trabajador - SuenoSimple',
-      client: 'SuenoSimple',
-      status: 'active',
+      name: "Landing Dia del Trabajador - SuenoSimple",
+      client: "SuenoSimple",
+      status: "active",
       fields: {
-        title: 'Dia del trabajador',
-        subtitle: 'Hasta 50% off en colchones',
-        ctaText: 'Ver colchones',
-        ctaUrl: 'https://suenosimple.com/dia-del-trabajador',
-        eventDate: '2026-05-01',
-        heroImageUrl: 'https://via.placeholder.com/1200x400'
+        title: "Dia del trabajador",
+        subtitle: "Hasta 50% off en colchones",
+        ctaText: "Ver colchones",
+        ctaUrl: "https://suenosimple.com/dia-del-trabajador",
+        eventDate: "2026-05-01",
+        heroImageUrl: "https://via.placeholder.com/1200x400",
       },
-      createdAt: '2026-04-29T19:00:00.000Z'
+      createdAt: "2026-04-29T19:00:00.000Z",
     },
     {
       id: 4,
       templateId: 1,
-      name: 'Hot Sale 2026 - SuenoSimple',
-      client: 'SuenoSimple',
-      status: 'active',
+      name: "Hot Sale 2026 - SuenoSimple",
+      client: "SuenoSimple",
+      status: "active",
       fields: {
-        title: 'Hot Sale 2026',
-        subtitle: 'Hasta 50% off en colchones',
-        ctaText: 'Ver ofertas',
-        ctaUrl: 'https://suenosimple.com/hot-sale',
-        eventDate: '2026-05-20',
-        heroImageUrl: 'https://via.placeholder.com/1200x400'
+        title: "Hot Sale 2026",
+        subtitle: "Hasta 50% off en colchones",
+        ctaText: "Ver ofertas",
+        ctaUrl: "https://suenosimple.com/hot-sale",
+        eventDate: "2026-05-20",
+        heroImageUrl: "https://via.placeholder.com/1200x400",
       },
-      createdAt: '2026-04-01T10:00:00.000Z'
+      createdAt: "2026-04-01T10:00:00.000Z",
     },
     {
       id: 5,
       templateId: 2,
-      name: 'Lanzamiento Economica Pro 2026',
-      client: 'SuenoSimple',
-      status: 'active',
+      name: "Lanzamiento Economica Pro 2026",
+      client: "SuenoSimple",
+      status: "active",
       fields: {
-        productName: 'Colchon Economica Pro',
-        productDescription: 'El mejor descanso al mejor precio. Foam de alta densidad, cobertura antihumedad.',
-        price: '85000',
-        originalPrice: '120000',
-        ctaText: 'Comprarlo ahora',
-        ctaUrl: 'https://suenosimple.com/economica-pro'
+        productName: "Colchon Economica Pro",
+        productDescription:
+          "El mejor descanso al mejor precio. Foam de alta densidad, cobertura antihumedad.",
+        price: "85000",
+        originalPrice: "120000",
+        ctaText: "Comprarlo ahora",
+        ctaUrl: "https://suenosimple.com/economica-pro",
       },
-      createdAt: '2026-03-15T09:00:00.000Z'
+      createdAt: "2026-03-15T09:00:00.000Z",
     },
     {
       id: 6,
       templateId: 3,
-      name: 'Captacion leads - Newsletter SuenoSimple',
-      client: 'SuenoSimple',
-      status: 'draft',
+      name: "Captacion leads - Newsletter SuenoSimple",
+      client: "SuenoSimple",
+      status: "draft",
       fields: {
-        title: 'Dormir bien no es un lujo',
-        description: 'Suscribite y recibí ofertas exclusivas antes que nadie. Solo por tiempo limitado.',
-        ctaText: 'Quiero ofertas',
-        privacyUrl: 'https://suenosimple.com/privacidad'
+        title: "Dormir bien no es un lujo",
+        description:
+          "Suscribite y recibí ofertas exclusivas antes que nadie. Solo por tiempo limitado.",
+        ctaText: "Quiero ofertas",
+        privacyUrl: "https://suenosimple.com/privacidad",
       },
-      createdAt: '2026-04-10T14:00:00.000Z'
+      createdAt: "2026-04-10T14:00:00.000Z",
     },
     {
       id: 7,
       templateId: 1,
-      name: 'Black Friday 2026 - TechStore',
-      client: 'TechStore',
-      status: 'draft',
+      name: "Black Friday 2026 - TechStore",
+      client: "TechStore",
+      status: "draft",
       fields: {
-        title: 'Black Friday TechStore',
-        subtitle: 'Los mejores precios del año en tecnología',
-        ctaText: 'Ver productos',
-        ctaUrl: 'https://techstore.com/black-friday',
-        eventDate: '2026-11-27',
-        heroImageUrl: 'https://via.placeholder.com/1200x400'
+        title: "Black Friday TechStore",
+        subtitle: "Los mejores precios del año en tecnología",
+        ctaText: "Ver productos",
+        ctaUrl: "https://techstore.com/black-friday",
+        eventDate: "2026-11-27",
+        heroImageUrl: "https://via.placeholder.com/1200x400",
       },
-      createdAt: '2026-04-12T11:00:00.000Z'
-    }
+      createdAt: "2026-04-12T11:00:00.000Z",
+    },
   ],
+  //leads asociados a la landing
   leads: [
     {
       id: 1,
       landingId: 3,
-      name: 'Maria Gomez',
-      email: 'maria@gmail.com',
-      phone: '1134567890',
+      name: "Maria Gomez",
+      email: "maria@gmail.com",
+      phone: "1134567890",
       message: null,
-      createdAt: '2026-04-11T10:00:00.000Z'
+      createdAt: "2026-04-11T10:00:00.000Z",
     },
     {
       id: 2,
       landingId: 3,
-      name: 'Juan Perez',
-      email: 'juan.perez@gmail.com',
+      name: "Juan Perez",
+      email: "juan.perez@gmail.com",
       phone: null,
-      message: 'Quiero info del colchon matrimonial',
-      createdAt: '2026-04-11T12:00:00.000Z'
+      message: "Quiero info del colchon matrimonial",
+      createdAt: "2026-04-11T12:00:00.000Z",
     },
     {
       id: 3,
       landingId: 3,
-      name: 'Laura Martinez',
-      email: 'laura.m@hotmail.com',
-      phone: '1145678901',
+      name: "Laura Martinez",
+      email: "laura.m@hotmail.com",
+      phone: "1145678901",
       message: null,
-      createdAt: '2026-04-12T08:30:00.000Z'
-    }
-  ]
-}
+      createdAt: "2026-04-12T08:30:00.000Z",
+    },
+  ],
+  // Match Sales
+  matches: [
+    {
+      id: 1,
+      homeTeam: "Argentina",
+      awayTeam: "Argelia",
+      matchDate: "2026-06-16T22:00:00.000Z",
+      stage: "GROUP_STAGE",
+      status: "SCHEDULED",
+      landingId: 2,
 
-module.exports = db
+      offer: {
+        id: 1,
+        title: "30% OFF",
+        discountPercentage: 30,
+        active: true,
+      },
+    },
+    {
+      id: 2,
+      homeTeam: "Argentina",
+      awayTeam: "Austria",
+      matchDate: "2026-06-22T14:00:00.000Z",
+      stage: "GROUP_STAGE",
+      status: "SCHEDULED",
+      landingId: 2,
+
+      offer: {
+        id: 1,
+        title: "20% OFF",
+        discountPercentage: 20,
+        active: true,
+      },
+    },
+    {
+      id: 3,
+      homeTeam: "Argentina",
+      awayTeam: "Jordania",
+      matchDate: "2026-06-27T23:00:00.000Z",
+      stage: "GROUP_STAGE",
+      status: "SCHEDULED",
+      landingId: 2,
+
+      offer: null,
+    },
+  ],
+};
+
+module.exports = db;
